@@ -11,6 +11,9 @@
 		CE4781592BFB0FE800B8CCBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4781582BFB0FE800B8CCBF /* ContentView.swift */; };
 		CE47815B2BFB0FEB00B8CCBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE47815A2BFB0FEB00B8CCBF /* Assets.xcassets */; };
 		CE47815F2BFB0FEB00B8CCBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE47815E2BFB0FEB00B8CCBF /* Preview Assets.xcassets */; };
+		CE4781672BFB11E300B8CCBF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4781662BFB11E300B8CCBF /* WebKit.framework */; };
+		CE4781692BFB172800B8CCBF /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4781682BFB172800B8CCBF /* WebView.swift */; };
+		CE51E4212BFB20500006D36E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE51E4202BFB20500006D36E /* UIKit.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,10 @@
 		CE47815A2BFB0FEB00B8CCBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE47815C2BFB0FEB00B8CCBF /* dang_dang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dang_dang.entitlements; sourceTree = "<group>"; };
 		CE47815E2BFB0FEB00B8CCBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE4781662BFB11E300B8CCBF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		CE4781682BFB172800B8CCBF /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		CE51E4202BFB20500006D36E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		CE590D522C37CD3A00094FC7 /* dang-dang-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "dang-dang-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4781672BFB11E300B8CCBF /* WebKit.framework in Frameworks */,
+				CE51E4212BFB20500006D36E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +47,7 @@
 			children = (
 				CE4781552BFB0FE800B8CCBF /* dang_dang */,
 				CE4781542BFB0FE800B8CCBF /* Products */,
+				CE4781652BFB11E300B8CCBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,11 +62,13 @@
 		CE4781552BFB0FE800B8CCBF /* dang_dang */ = {
 			isa = PBXGroup;
 			children = (
+				CE590D522C37CD3A00094FC7 /* dang-dang-Info.plist */,
 				CE4781562BFB0FE800B8CCBF /* dang_dangApp.swift */,
 				CE4781582BFB0FE800B8CCBF /* ContentView.swift */,
 				CE47815A2BFB0FEB00B8CCBF /* Assets.xcassets */,
 				CE47815C2BFB0FEB00B8CCBF /* dang_dang.entitlements */,
 				CE47815D2BFB0FEB00B8CCBF /* Preview Content */,
+				CE4781682BFB172800B8CCBF /* WebView.swift */,
 			);
 			path = dang_dang;
 			sourceTree = "<group>";
@@ -67,6 +79,15 @@
 				CE47815E2BFB0FEB00B8CCBF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE4781652BFB11E300B8CCBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE51E4202BFB20500006D36E /* UIKit.framework */,
+				CE4781662BFB11E300B8CCBF /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4781692BFB172800B8CCBF /* WebView.swift in Sources */,
 				CE4781592BFB0FE800B8CCBF /* ContentView.swift in Sources */,
 				CE4781572BFB0FE800B8CCBF /* dang_dangApp.swift in Sources */,
 			);
@@ -199,6 +221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = NO;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -254,6 +277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = NO;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -266,7 +290,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = dang_dang/dang_dang.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dang_dang/Preview Content\"";
@@ -274,6 +300,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "dang-dang-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -284,7 +312,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
@@ -304,7 +332,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = dang_dang/dang_dang.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dang_dang/Preview Content\"";
@@ -312,6 +342,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "dang-dang-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -322,7 +354,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.5;

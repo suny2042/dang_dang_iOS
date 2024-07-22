@@ -10,8 +10,23 @@ import SwiftUI
 @main
 struct dang_dangApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+            WindowGroup {
+                ContentView()
+                    //.onAppear {
+                    //    showInitialStoryboard()
+                    //}
+            }
         }
-    }
+    /*
+    func showInitialStoryboard() {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let initialViewController = storyboard.instantiateInitialViewController() {
+                    window.rootViewController = initialViewController
+                    window.makeKeyAndVisible()
+                }
+            }
+        }
+     */
 }
