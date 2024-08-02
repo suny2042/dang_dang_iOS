@@ -138,61 +138,61 @@ struct WebView: UIViewRepresentable {
         }
 
         // 파일 업로드를 위한 파일 선택 핸들러
-                func webView(_ webView: WKWebView, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
-                    self.completionHandler = completionHandler
-                    
-                    let alert = UIAlertController(title: "Upload Image", message: "Choose a source", preferredStyle: .actionSheet)
-                    
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-                            self.presentImagePicker(sourceType: .camera)
-                        }))
-                    }
-                    
-                    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { _ in
-                            self.presentImagePicker(sourceType: .photoLibrary)
-                        }))
-                    }
-                    
-                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-                        completionHandler(nil)
-                    }))
-                    
-                    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-                }
-                
-                // 이미지 피커 표시
-                func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
-                    let imagePickerController = UIImagePickerController()
-                    imagePickerController.delegate = self
-                    imagePickerController.sourceType = sourceType
-                    UIApplication.shared.windows.first?.rootViewController?.present(imagePickerController, animated: true, completion: nil)
-                }
-                
-                // 이미지 선택 완료 후 처리
-                func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-                    if let imageURL = info[.imageURL] as? URL {
-                        completionHandler?([imageURL])
-                    } else if let image = info[.originalImage] as? UIImage {
-                        // 이미지 저장 후 URL 반환
-                        let tempDirectory = FileManager.default.temporaryDirectory
-                        let imageName = UUID().uuidString + ".jpg"
-                        let imageURL = tempDirectory.appendingPathComponent(imageName)
-                        if let jpegData = image.jpegData(compressionQuality: 1.0) {
-                            try? jpegData.write(to: imageURL)
-                            completionHandler?([imageURL])
-                        } else {
-                            completionHandler?(nil)
-                        }
-                    }
-                    picker.dismiss(animated: true, completion: nil)
-                }
-                
-                func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        func webView(_ webView: WKWebView, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
+            self.completionHandler = completionHandler
+            
+            let alert = UIAlertController(title: "Upload Image", message: "Choose a source", preferredStyle: .actionSheet)
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                    self.presentImagePicker(sourceType: .camera)
+                }))
+            }
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { _ in
+                    self.presentImagePicker(sourceType: .photoLibrary)
+                }))
+            }
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                completionHandler(nil)
+            }))
+            
+            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+        
+        // 이미지 피커 표시
+        func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = sourceType
+            UIApplication.shared.windows.first?.rootViewController?.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+        // 이미지 선택 완료 후 처리
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let imageURL = info[.imageURL] as? URL {
+                completionHandler?([imageURL])
+            } else if let image = info[.originalImage] as? UIImage {
+                // 이미지 저장 후 URL 반환
+                let tempDirectory = FileManager.default.temporaryDirectory
+                let imageName = UUID().uuidString + ".jpg"
+                let imageURL = tempDirectory.appendingPathComponent(imageName)
+                if let jpegData = image.jpegData(compressionQuality: 1.0) {
+                    try? jpegData.write(to: imageURL)
+                    completionHandler?([imageURL])
+                } else {
                     completionHandler?(nil)
-                    picker.dismiss(animated: true, completion: nil)
                 }
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            completionHandler?(nil)
+            picker.dismiss(animated: true, completion: nil)
+        }
         
     }
 }
